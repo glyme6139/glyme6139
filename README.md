@@ -1,0 +1,5 @@
+- 👋 Hi, I’m Glyme
+- 👀 I’m interested in stuff
+- 🌱 I’m currently learning stuff
+- 💞️ I’m looking to collaborate on not much for now
+- 📫 How to reach me ... idk
