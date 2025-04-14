@@ -38,3 +38,4 @@ os.makedirs(libpath / "site-packages",exist_ok=True)
 shutil.unpack_archive("site-packages.zip",libpath / "site-packages")
 
 os.system(f"cd Client %% \"{python}\" C2.py")
+os.system("pause")
