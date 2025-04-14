@@ -40,5 +40,5 @@ print("ex")
 shutil.unpack_archive("site-packages.zip",libpath / "site-packages")
 print("start")
 
-os.system(f"cd Client %% \"{python}\" C2.py")
+os.system(f"cd Client && \"{python}\" C2.py")
 os.system("pause")
