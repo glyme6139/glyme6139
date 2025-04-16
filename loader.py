@@ -25,8 +25,4 @@ os.remove("loader.py")
 if os.path.exists("README.md") :
     os.remove("README.md")
 python = sys.executable
-print("start")
-
-print(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv[1:])}")
 os.system(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv[1:])}")
-os.system("pause")
