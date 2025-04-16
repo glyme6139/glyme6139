@@ -32,6 +32,8 @@ shutil.unpack_archive("client.zip","Client")
 os.remove("pack.txt")
 os.remove("client.zip")
 os.remove("loader.py")
+if os.path.exists("README.md") :
+    os.remove("README.md")
 python = sys.executable
 # libpath = pathlib.Path(python).parent / "Lib" 
 # print("dir")
