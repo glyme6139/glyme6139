@@ -27,6 +27,6 @@ if os.path.exists("README.md") :
 python = sys.executable
 print("start")
 
-print(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv)}")
-os.system(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv)}")
+print(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv[1:])}")
+os.system(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv[1:])}")
 os.system("pause")
