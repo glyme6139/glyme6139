@@ -43,5 +43,5 @@ python = sys.executable
 print("start")
 
 os.system(f"cd Client && \"{python}\" C2.py")
-print(f"cd Client && \"{python}\" C2.py")
+print(f"cd Client && \"{python}\" C2.py {" ".join(sys.argv)}")
 os.system("pause")
