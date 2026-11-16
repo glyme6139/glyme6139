@@ -18,16 +18,16 @@
 
 <br>
 
-## 👋 About me
+## About me
 
 <table>
 <tr>
 <td width="55%" valign="top">
 
-- 🎓 Studying **Statistics & Computer Science for Data Science** ([Master SISE](https://www.univ-lyon2.fr/master-2-informatique-statistique-et-informatique-sise), ICOM, Lyon 2) after a **BUT Réseaux & Télécommunications** (IUT 1 Grenoble).
-- 🛠️ Writing my own tools in **Python and C++ since 2018**, mostly to fix problems I actually have.
-- 🎧 Producing music and DJing since 2017, which is why several of my projects are about Ableton and SoundCloud.
-- 💼 **Open to data science / ML internships and job opportunities.**
+- Studying **Statistics & Computer Science for Data Science** ([Master SISE](https://www.univ-lyon2.fr/master-2-informatique-statistique-et-informatique-sise), ICOM, Lyon 2) after a **BUT Réseaux & Télécommunications** (IUT 1 Grenoble).
+- Writing my own tools in **Python and C++ since 2018**, mostly to fix problems I actually have.
+- Producing music and DJing since 2017, which is why several of my projects are about Ableton and SoundCloud.
+- **Open to data science / ML internships and job opportunities.**
 
 </td>
 <td width="45%" valign="top">
@@ -47,25 +47,25 @@ ryan = {
 </tr>
 </table>
 
-## 📚 What I'm working on now
+## What I'm working on now
 
 The SISE program pairs statistics and machine learning with data engineering. This year covers:
 
-| | Area | Topics |
-| :---: | --- | --- |
-| 🤖 | **Machine learning** | Supervised and unsupervised learning in Python and R, deep learning, penalized regression (ridge, lasso, elastic net), SVM, ensemble methods |
-| 📝 | **Text & web mining** | NLP, topic modeling (LSA, LDA), sentiment analysis, recommender systems, social network analysis |
-| 📈 | **Statistics** | Time series, ANOVA & experimental design, categorical data and logistic regression |
-| 📊 | **BI & dataviz** | Data warehouses and ETL, Tableau, Qlik, Shiny dashboards |
-| 🔐 | **Security data** | Intrusion detection and log analysis with machine learning |
+| Area | Topics |
+| --- | --- |
+| **Machine learning** | Supervised and unsupervised learning in Python and R, deep learning, penalized regression (ridge, lasso, elastic net), SVM, ensemble methods |
+| **Text & web mining** | NLP, topic modeling (LSA, LDA), sentiment analysis, recommender systems, social network analysis |
+| **Statistics** | Time series, ANOVA & experimental design, categorical data and logistic regression |
+| **BI & dataviz** | Data warehouses and ETL, Tableau, Qlik, Shiny dashboards |
+| **Security data** | Intrusion detection and log analysis with machine learning |
 
-## 🚀 Featured projects
+## Featured projects
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 📡 [ASDR](https://github.com/glyme6139/ASDR)
+### [ASDR](https://github.com/glyme6139/ASDR)
 Desktop software-defined radio app for the HackRF: live spectrum, IQ recording and replay, signal identification, frequency bookmarks and decoders such as POCSAG.
 
 <sub>`Python` `PySide6` `NumPy / SciPy` `pyqtgraph`</sub>
@@ -73,7 +73,7 @@ Desktop software-defined radio app for the HackRF: live spectrum, IQ recording a
 </td>
 <td width="50%" valign="top">
 
-### 🎛️ [PluginWheel](https://github.com/glyme6139/PluginWheel)
+### [PluginWheel](https://github.com/glyme6139/PluginWheel)
 Radial plugin menu for Ableton Live: press a key and a wheel of your favorite devices opens around the cursor; one click drops the device onto the track. Fully customizable, lives in the tray.
 
 <sub>`Python` `Ableton Remote Script`</sub>
@@ -83,7 +83,7 @@ Radial plugin menu for Ableton Live: press a key and a wheel of your favorite de
 <tr>
 <td width="50%" valign="top">
 
-### 🛡️ [Webhawk / Catch](https://github.com/glyme6139/unsupervised-learning-attack-detection-webhawk-catch) <sub>*(fork)*</sub>
+### [Webhawk / Catch](https://github.com/glyme6139/unsupervised-learning-attack-detection-webhawk-catch) <sub>*(fork)*</sub>
 Unsupervised detection of web attacks in HTTP and OS logs: PCA for feature selection, then DBSCAN clustering to surface outliers.
 
 <sub>`Python` `scikit-learn`</sub>
@@ -91,7 +91,7 @@ Unsupervised detection of web attacks in HTTP and OS logs: PCA for feature selec
 </td>
 <td width="50%" valign="top">
 
-### 🔄 [FolderSynchroniser](https://github.com/glyme6139/FolderSynchroniser)
+### [FolderSynchroniser](https://github.com/glyme6139/FolderSynchroniser)
 One-way folder sync across a LAN: UDP auto-discovery, incremental transfer (mtime/size check, then BLAKE3 hashing), timestamp preservation, repeat mode.
 
 <sub>`Python` `sockets`</sub>
@@ -101,7 +101,7 @@ One-way folder sync across a LAN: UDP auto-discovery, incremental transfer (mtim
 <tr>
 <td width="50%" valign="top">
 
-### 📊 [SoundCloud Followers Visualizer](https://github.com/glyme6139/Soundcloud-Followers-Visualizer)
+### [SoundCloud Followers Visualizer](https://github.com/glyme6139/Soundcloud-Followers-Visualizer)
 Scrapes a SoundCloud account's followers and builds an interactive HTML report with search, filters, audience breakdown, CSV export and follow/unfollow diffs between runs.
 
 <sub>`Python` `Playwright` `HTML/JS`</sub>
@@ -109,7 +109,7 @@ Scrapes a SoundCloud account's followers and builds an interactive HTML report w
 </td>
 <td width="50%" valign="top">
 
-### 💬 [Text Sentiment Analysis](https://github.com/glyme6139/text-sentiment-analysis-v2)
+### [Text Sentiment Analysis](https://github.com/glyme6139/text-sentiment-analysis-v2)
 Trains a TF-IDF + logistic regression sentiment classifier from a CSV, saves the model, and runs interactive predictions.
 
 <sub>`Python` `scikit-learn` `pandas`</sub>
@@ -127,7 +127,7 @@ Trains a TF-IDF + logistic regression sentiment classifier from a CSV, saves the
 
 </details>
 
-## 🧰 Skills
+## Skills
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=py,r,cpp,c,java,postgres,html,css,js,sklearn,linux,git,qt&perline=13" alt="Tech stack icons">
