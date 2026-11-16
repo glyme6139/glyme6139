@@ -116,6 +116,16 @@ Trains a TF-IDF + logistic regression sentiment classifier from a CSV, saves the
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top">
+
+### [Python-Utils](https://github.com/glyme6139/Python-Utils)
+Windows helper modules for Python scripts: secure file deletion (`sdelete` or multi-pass overwrite), password-based partial file encryption (PBKDF2 + Fernet), UAC elevation that stays in the same interactive console, and hiding the console window.
+
+<sub>`Python` `Win32 API / ctypes` `cryptography`</sub>
+
+</td>
+</tr>
 </table>
 
 <details>
