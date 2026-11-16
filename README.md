@@ -117,12 +117,20 @@ Trains a TF-IDF + logistic regression sentiment classifier from a CSV, saves the
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top">
+<td width="50%" valign="top">
 
 ### [Python-Utils](https://github.com/glyme6139/Python-Utils)
 Windows helper modules for Python scripts: secure file deletion (`sdelete` or multi-pass overwrite), password-based partial file encryption (PBKDF2 + Fernet), UAC elevation that stays in the same interactive console, and hiding the console window.
 
 <sub>`Python` `Win32 API / ctypes` `cryptography`</sub>
+
+</td>
+<td width="50%" valign="top">
+
+### [XOLCTS](https://github.com/glyme6139/XOLCTS)
+A toolkit of UI components (buttons, sliders, menus, console…) and noise utilities on top of the olc Pixel Game Engine.
+
+<sub>`C++` `olc Pixel Game Engine`</sub>
 
 </td>
 </tr>
@@ -132,7 +140,6 @@ Windows helper modules for Python scripts: secure file deletion (`sdelete` or mu
 <summary><b>More projects</b></summary>
 <br>
 
-- [**XOLCTS**](https://github.com/glyme6139/XOLCTS): a toolkit of UI components (buttons, sliders, menus, console…) and noise utilities on top of the olc Pixel Game Engine. *(C++)*
 - [**prologin2022**](https://github.com/glyme6139/prologin2022): my solutions to the Prologin 2022 qualifying round, France's national programming contest for students. *(C++)*
 
 </details>
